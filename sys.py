@@ -54,7 +54,7 @@ def search():
     fetched_data = manager.search(**StringVarCollection.convert_string_var_collection(string_var_collection))
     Syllabus_table.delete(*Syllabus_table.get_children())
     for data in fetched_data:
-        Syllabus_table.insert('', END, values=data)
+        Syllabus_table.insert('', END, values=list(map(lambda x: str(x).replace("\n", " "), data)))
 
 
 def add_course():
