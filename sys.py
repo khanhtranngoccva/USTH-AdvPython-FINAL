@@ -59,6 +59,7 @@ def search():
 
 def add_course():
     all_inputs = StringVarCollection.convert_string_var_collection(string_var_collection)
+    del all_inputs["id"]
     for value in all_inputs.values():
         if not value:
             messagebox.showerror('Error', 'All fields are required')
@@ -66,6 +67,11 @@ def add_course():
     manager.create_course(**all_inputs)
     con.commit()
     list_courses()
+
+
+def list_majors(self):
+    all_majors = manager.list_majors()
+    IpMajor["values"] = all_majors
 
 
 def delete():
@@ -138,10 +144,9 @@ IpName = Entry(font=("times new roman", 13, "bold"), textvariable=string_var_col
 
 LbMajor = Label(font=("times new roman", 13, "bold"), text="Major:", bg='#FFEBCD').place(x=40, y=215, width=200,
                                                                                          height=30)
-IpMajor = ttk.Combobox(font=("times new roman", 13, "bold"), textvariable=string_var_collection.major_id).place(x=250,
-                                                                                                                y=215,
-                                                                                                                width=250,
-                                                                                                                height=30)
+IpMajor = ttk.Combobox(font=("times new roman", 13, "bold"), textvariable=string_var_collection.major_id)
+IpMajor.place(x=250, y=215, width=250, height=30)
+IpMajor.bind("<ButtonRelease-1>", list_majors)
 
 LbCredit = Label(font=("times new roman", 13, "bold"), text="Credit Points:", bg='#FFEBCD').place(x=40, y=265,
                                                                                                   width=200, height=30)
@@ -253,7 +258,7 @@ Button(font=("times new roman", 13, "bold"), text="SEARCH", command=search).plac
 Button(font=("times new roman", 13, "bold"), text="ADD", command=add_course).place(x=700, y=500, width=100)
 Button(font=("times new roman", 13, "bold"), text="DESELECT",
        command=lambda: StringVarCollection.reset_string_var_collection(string_var_collection)).place(x=820, y=500,
-                                                                                                       width=100)
+                                                                                                     width=100)
 Button(font=("times new roman", 13, "bold"), text="DELETE", command=delete).place(x=940, y=500, width=100)
 Button(font=("times new roman", 13, "bold"), text="UPDATE", command=update).place(x=1110, y=500, width=100)
 Button(font=("times new roman", 13, "bold"), text="VIEW", command=view).place(x=1230, y=500, width=100)

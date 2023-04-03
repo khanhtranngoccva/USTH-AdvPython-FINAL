@@ -58,7 +58,7 @@ CREATE TABLE assessment_percent
 
 CREATE TABLE syllabus
 (
-    id                   int,
+    id                   int primary key auto_increment,
     major_id             varchar(20) not null,
     course_name          long varchar,
     credit_points_inECTs int,
@@ -159,3 +159,7 @@ http://docs.oracle.com/javase/7/docs/api/index.", "1. Course introduction - Intr
 
 SELECT *
 FROM syllabus;
+
+CREATE FUNCTION compareFuzzy(actual LONG VARCHAR, expected LONG VARCHAR) RETURNS BOOLEAN
+    DETERMINISTIC
+    RETURN IF(expected = '', TRUE, actual=expected OR actual REGEXP expected)

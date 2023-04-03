@@ -10,24 +10,35 @@ def list_syllabus():
     return cursor.fetchall()
 
 
+def list_majors():
+    query = 'select major_id from syllabus'
+    cursor = create_cursor()
+    cursor.execute(query)
+    return list(set(map(lambda item: item[0].strip(" "), cursor)))
+
+
 def search(id, major_id, course_name, credit_points,
            background_knowledge, textbook, reference, course_content, objectives, **kwargs):
     cursor = create_cursor()
+    args = (id, major_id, course_name, credit_points, background_knowledge,
+            textbook, reference, course_content,
+            objectives)
     cursor.execute(
-        'select * from syllabus where id=%s or major_id=%s or course_name like %s or credit_points_inECTs=%s or '
-        'background_knowledge like %s or ref_literature like %s or textbook like %s or course_content like %s or '
-        'objectives like %s',
-        (id, major_id, course_name, credit_points, background_knowledge, textbook, reference, course_content,
-         objectives))
-    return cursor.fetchall()
+        'select * from syllabus where compareFuzzy(id, %s) and compareFuzzy(major_id, %s) and compareFuzzy(course_name, %s) and '
+        'compareFuzzy(credit_points_inECTs, %s) and compareFuzzy(background_knowledge, %s) and compareFuzzy(ref_literature, %s) and '
+        'compareFuzzy(textbook, %s) and compareFuzzy(course_content, %s) and compareFuzzy(objectives, %s)',
+        args)
+    result = cursor.fetchall()
+    pprint.pprint(result)
+    return result
 
 
-def create_course(id, major_id, course_name, credit_points,
+def create_course(major_id, course_name, credit_points,
                   background_knowledge, textbook, reference, course_content, objectives,
                   lecture, tutor, practice, attendance, exercises, assignments, reports, midterm, final, **kwargs):
     cursor = create_cursor()
     cursor.execute('insert into syllabus values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s, %s)', (
-        id, major_id, course_name, credit_points, background_knowledge, textbook,
+        None, major_id, course_name, credit_points, background_knowledge, textbook,
         reference, course_content, objectives, lecture, tutor, practice, attendance,
         exercises, assignments, reports, midterm, final))
     connection.commit()
