@@ -1,4 +1,5 @@
 import tkinter
+import json
 
 class Textbox(tkinter.Text):
     def __init__(self, parent=None, *args, textvariable: tkinter.StringVar=None, **kwargs):
@@ -9,11 +10,12 @@ class Textbox(tkinter.Text):
         self.bind("<KeyRelease>", lambda _: self._update())
 
     def _update(self):
-        self._textvariable.set(self.get("1.0", "end"))
+        data = self.get("0.0", tkinter.END+"-1c") # Newline removal
+        self._textvariable.set(data)
 
     def _refresh(self, *args):
         last_index = self.index("insert")
-        self.delete("1.0", tkinter.END)
+        self.delete("0.0", tkinter.END)
         self.insert(tkinter.END, self._textvariable.get())
         self.mark_set("insert", last_index)
 

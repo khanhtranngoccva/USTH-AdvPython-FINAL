@@ -97,7 +97,7 @@ Syllabus_table.config(show='headings')
 tk.Button(font=("times new roman", 13, "bold"), text="ADD",
                   command=lambda: create_edit_window("ADD", None, lambda x: list_courses())).pack(side="left")
 tk.Button(font=("times new roman", 13, "bold"), text="SEARCH",
-                  command=lambda: create_edit_window("SEARCH", None, lambda x: list_courses())).pack(side="left")
+                  command=lambda: create_edit_window("SEARCH", None, lambda x: update_view(x))).pack(side="left")
 tk.Button(font=("times new roman", 13, "bold"), text="LIST",
                   command=lambda: list_courses()).pack(side="left")
 tk.Button(font=("times new roman", 13, "bold"), text="VIEW AND EDIT",
