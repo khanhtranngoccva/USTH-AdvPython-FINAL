@@ -3,12 +3,12 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox 
 from PIL import ImageTk #importing jpg images
-import pymysql
+from ui_root import root
 from manager import get_user
 
 
 def login_ui():
-    root = Tk()
+    window = Toplevel(root)
 
     success = False
 
@@ -25,22 +25,23 @@ def login_ui():
         if not result:
             messagebox.showerror("Error", "Username or password is incorrect.")
         else:
-            root.destroy()
+            window.quit()
+            window.destroy()
             success = True
 
-    root.title("Login")
-    root.geometry("400x500")
-    root.configure(bg='#FFEBCD')
-    logo =Label(root,bd=50,text="LOGIN",fg="red",bg='#FFEBCD',font=("times new roman",30,"bold"))
+    window.title("Login")
+    window.geometry("400x500")
+    window.configure(bg='#FFEBCD')
+    logo =Label(window,bd=50,text="LOGIN",fg="red",bg='#FFEBCD',font=("times new roman",30,"bold"))
     logo.pack(side=TOP,fill=X)
 
-    Label(root,text = "Username",font=("times new roman",13,"bold"),bg='#FFEBCD').place(x = 40,y = 180) 
-    user_name_input_area = Entry(root, font=("times new roman",13,"bold"), width = 30)
+    Label(window,text = "Username",font=("times new roman",13,"bold"),bg='#FFEBCD').place(x = 40,y = 180) 
+    user_name_input_area = Entry(window, font=("times new roman",13,"bold"), width = 30)
     user_name_input_area.place(x = 130, y = 180,width=200,height=30)
-    Label(root,text = "Password",font=("times new roman",13,"bold"),bg='#FFEBCD').place(x = 40,y = 230) 
-    user_password_entry_area = Entry(root, font=("times new roman",13,"bold"), width = 30)
+    Label(window,text = "Password",font=("times new roman",13,"bold"),bg='#FFEBCD').place(x = 40,y = 230) 
+    user_password_entry_area = Entry(window, font=("times new roman",13,"bold"), width = 30)
     user_password_entry_area.place(x = 130, y = 230,width=200,height=30)
-    Button(root,text = "Login",font=("bold"), command=login).place(x = 150,y = 300,width=80) 
-
-    root.mainloop()
+    Button(window,text = "Login",font=("bold"), command=login).place(x = 150,y = 300,width=80) 
+    window.wm_transient(root)
+    window.mainloop()
     return success

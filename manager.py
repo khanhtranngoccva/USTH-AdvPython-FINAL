@@ -10,6 +10,13 @@ def list_syllabus():
     return cursor.fetchall()
 
 
+def get_one_course(course_id: int):
+    query = 'select * from syllabus where id=%s'
+    cursor = create_cursor()
+    cursor.execute(query, (course_id))
+    return cursor.fetchone()
+
+
 def list_majors():
     query = 'select major_id from syllabus'
     cursor = create_cursor()
@@ -29,7 +36,6 @@ def search(id, major_id, course_name, credit_points,
         'compareFuzzy(textbook, %s) and compareFuzzy(course_content, %s) and compareFuzzy(objectives, %s)',
         args)
     result = cursor.fetchall()
-    pprint.pprint(result)
     return result
 
 
