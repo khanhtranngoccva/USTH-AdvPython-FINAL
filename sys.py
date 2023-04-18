@@ -2,9 +2,12 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
 import tkinter as tk
-import pymysql
 from database import cur, con
 import manager
+from login import login_ui
+
+if not login_ui():
+    exit(0)
 
 root = Tk()
 root.title("SYLLABUS MANAGEMENT SYSTEM")

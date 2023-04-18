@@ -1,7 +1,7 @@
 import pymysql
 from pymysql.cursors import Cursor
 
-connection = pymysql.connect(host='127.0.0.1', user='root', passwd='2003', database='syllabus_management_system')
+connection = pymysql.connect(host='127.0.0.1', user='root', passwd='123456', database='syllabus_management_system')
 cur = connection.cursor()
 con = connection
 

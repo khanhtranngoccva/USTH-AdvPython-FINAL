@@ -8,53 +8,6 @@ CREATE TABLE user_details
     password_ varchar(20) not null
 );
 
-CREATE TABLE major
-(
-    major_id   varchar(20) not null,
-    major_name varchar(50) not null,
-    primary key (major_id)
-);
-
-CREATE TABLE course
-(
-    course_id            varchar(20) not null,
-    course_name          long varchar,
-    credit_points_inECTs int,
-    background_knowledge long varchar,
-    textbook             long varchar,
-    ref_literature       long varchar,
-    course_content       long varchar,
-    objectives           long varchar,
-    primary key (course_id)
-);
-
-CREATE TABLE major_course
-(
-    major_id  varchar(20) not null references major (major_id),
-    course_id varchar(20) not null references course (course_id)
-);
-
-CREATE TABLE time_commitment_inHOURS
-(
-    course_id varchar(20) not null,
-    lecture   int,
-    tutorial  int,
-    practical int,
-    total     int,
-    primary key (course_id)
-);
-
-CREATE TABLE assessment_percent
-(
-    course_id  varchar(20) not null,
-    attendance int,
-    exercise   int,
-    assignment int,
-    report     int,
-    midterm    int,
-    final      int,
-    primary key (course_id)
-);
 
 CREATE TABLE syllabus
 (

@@ -64,5 +64,12 @@ def delete_course(id):
     connection.commit()
 
 
+def get_user(user_name: str, password: str):
+    cursor = create_cursor()
+    cursor.execute('select * from user_details where account=%s and password=%s', (user_name, password))
+    result = cursor.fetchone()
+    return result
+
+
 if __name__ == '__main__':
     pprint.pprint(list_syllabus())
