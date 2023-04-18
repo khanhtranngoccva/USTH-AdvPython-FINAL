@@ -98,7 +98,7 @@ def create_edit_window(mode: str, course_id: int = None, callback = None):
         try:
             window.destroy()
         except Exception as e:
-            print(e)
+            pass
 
     def fill_fields():
         row = manager.get_one_course(course_id)
@@ -156,3 +156,5 @@ def create_edit_window(mode: str, course_id: int = None, callback = None):
         cb(None)
 
     populate()
+    window.mainloop()
+    exit_window()

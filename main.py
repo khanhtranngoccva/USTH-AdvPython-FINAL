@@ -8,8 +8,8 @@ from login import login_ui
 from ui.ui_root import root
 from details import create_edit_window
 
-# if not login_ui():
-#     exit(0)
+if not login_ui():
+    exit(0)
 
 logo = Label(root, bd=5, relief=RIDGE, text="SYLLABUS MANAGEMENT SYSTEM", fg="red", bg='#FFEBCD', font=("times new roman", 30, "bold"))
 logo.pack(side=TOP, fill=X)
