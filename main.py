@@ -11,14 +11,14 @@ from details import create_edit_window
 # if not login_ui():
 #     exit(0)
 
-logo = Label(root, bd=15, relief=RIDGE, text="SYLLABUS MANAGEMENT SYSTEM", fg="red", bg='#FFEBCD', font=("times new roman", 30, "bold"))
+logo = Label(root, bd=5, relief=RIDGE, text="SYLLABUS MANAGEMENT SYSTEM", fg="red", bg='#FFEBCD', font=("times new roman", 30, "bold"))
 logo.pack(side=TOP, fill=X)
 
-button_frame = Frame(root, bd=20, relief=RIDGE, bg='#FFEBCD')
-button_frame.pack(side="bottom", fill=tk.X)
+button_frame = Frame(root, pady=10)
+button_frame.pack(side="bottom", anchor="center")
 
 # input bolder
-main_frame = Frame(root, bd=20, relief=RIDGE, bg='#FFEBCD')
+main_frame = Frame(root, bd=5, relief=RIDGE, bg='#FFEBCD')
 main_frame.pack(side="top", fill=tk.BOTH, expand=True)
 # Frame(root, bd=10, relief=RIDGE, bg='#FFEBCD').place(x=20, y=560, width=1459, height=200)
 
@@ -94,14 +94,14 @@ Syllabus_table.config(show='headings')
 
 
 
-tk.Button(font=("times new roman", 13, "bold"), text="ADD",
-                  command=lambda: create_edit_window("ADD", None, lambda x: list_courses())).pack(side="left")
-tk.Button(font=("times new roman", 13, "bold"), text="SEARCH",
-                  command=lambda: create_edit_window("SEARCH", None, lambda x: update_view(x))).pack(side="left")
-tk.Button(font=("times new roman", 13, "bold"), text="LIST",
-                  command=lambda: list_courses()).pack(side="left")
-tk.Button(font=("times new roman", 13, "bold"), text="VIEW AND EDIT",
-                  command=lambda: view_course()).pack(side="left")
+tk.Button(button_frame, font=("times new roman", 13, "bold"), text="ADD",
+                  command=lambda: create_edit_window("ADD", None, lambda x: list_courses())).pack(side="left", padx=5)
+tk.Button(button_frame, font=("times new roman", 13, "bold"), text="SEARCH",
+                  command=lambda: create_edit_window("SEARCH", None, lambda x: update_view(x))).pack(side="left", padx=5)
+tk.Button(button_frame, font=("times new roman", 13, "bold"), text="LIST",
+                  command=lambda: list_courses()).pack(side="left", padx=5)
+tk.Button(button_frame, font=("times new roman", 13, "bold"), text="VIEW AND EDIT",
+                  command=lambda: view_course()).pack(side="left", padx=5)
 
 
 list_courses()

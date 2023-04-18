@@ -70,31 +70,29 @@ def create_edit_window(mode: str, course_id: int = None, callback = None):
             ("Final", string_var_collection.final, 1)
         ]
 
-        button_frame = tk.Frame(master=window)
-        button_frame.pack(side="top", fill=tk.X)
-        if mode == "ADD":
-            tk.Button(button_frame, font=("times new roman", 13, "bold"), text="ADD",
-                    command=add_course).pack(side=tk.LEFT)
-        elif mode == "SEARCH":
-            tk.Button(button_frame, font=("times new roman", 13, "bold"), text="SEARCH",
-                    command=search).pack(side=tk.LEFT)
-        elif mode == "EDIT":
-            tk.Button(button_frame, font=("times new roman", 13, "bold"), text="DELETE",
-                    command=delete).pack(side=tk.LEFT)
-            tk.Button(button_frame, font=("times new roman", 13, "bold"), text="UPDATE",
-                    command=update).pack(side=tk.LEFT)
-            fill_fields()
-
         input_frame = VerticalScrolledFrame(master=window)
-        input_frame.pack(side="bottom", fill=tk.BOTH, expand=True)
+        input_frame.pack(side="top", fill=tk.BOTH, expand=True)
 
         for data in input_widgets_data:
             frame = tk.Frame(master=input_frame.interior)
             frame.pack(side="top", fill=tk.X)
-            tk.Label(frame, width=30, text=data[0]).pack(side="left")
+            tk.Label(frame, width=20, text=data[0]).pack(side="left")
             Textbox(frame, height=data[2], textvariable=data[1]).pack(side="left", fill=tk.X, expand=True)
 
-        
+        button_frame = tk.Frame(master=window, pady=10)
+        button_frame.pack(side="top", anchor="center")
+        if mode == "ADD":
+            tk.Button(button_frame, font=("times new roman", 13, "bold"), text="ADD",
+                    command=add_course).pack(side=tk.LEFT, padx=5)
+        elif mode == "SEARCH":
+            tk.Button(button_frame, font=("times new roman", 13, "bold"), text="SEARCH",
+                    command=search).pack(side=tk.LEFT, padx=5)
+        elif mode == "EDIT":
+            tk.Button(button_frame, font=("times new roman", 13, "bold"), text="DELETE",
+                    command=delete).pack(side=tk.LEFT, padx=5)
+            tk.Button(button_frame, font=("times new roman", 13, "bold"), text="UPDATE",
+                    command=update).pack(side=tk.LEFT, padx=5)
+            fill_fields()
 
     def exit_window():
         try:
@@ -158,5 +156,3 @@ def create_edit_window(mode: str, course_id: int = None, callback = None):
         cb(None)
 
     populate()
-    window.mainloop()
-    exit_window()
