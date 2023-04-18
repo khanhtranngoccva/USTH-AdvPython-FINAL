@@ -5,7 +5,7 @@ import tkinter as tk
 from database import cur, con
 import manager
 from login import login_ui
-from ui_root import root
+from ui.ui_root import root
 from details import create_edit_window
 
 # if not login_ui():

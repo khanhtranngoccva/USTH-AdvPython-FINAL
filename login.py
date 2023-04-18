@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox 
 from PIL import ImageTk #importing jpg images
-from ui_root import root
+from ui.ui_root import root
 from manager import get_user
 
 

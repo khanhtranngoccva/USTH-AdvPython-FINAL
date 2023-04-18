@@ -2,8 +2,8 @@ import manager
 from tkinter import messagebox
 import tkinter as tk
 from tkinter import ttk
-from textbox import Textbox
-from scroll_frame import VerticalScrolledFrame
+from ui.textbox import Textbox
+from ui.scroll_frame import VerticalScrolledFrame
 
 class StringVarCollection:
     @staticmethod
