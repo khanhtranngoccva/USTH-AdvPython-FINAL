@@ -81,6 +81,7 @@ def create_edit_window(mode: str, course_id: int = None, callback = None):
 
         button_frame = tk.Frame(master=window, pady=10)
         button_frame.pack(side="top", anchor="center")
+        
         if mode == "ADD":
             tk.Button(button_frame, font=("times new roman", 13, "bold"), text="ADD",
                     command=add_course).pack(side=tk.LEFT, padx=5)

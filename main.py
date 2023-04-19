@@ -1,17 +1,18 @@
+from login import login_ui
+if not login_ui():
+    exit(0)
+
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
 import tkinter as tk
 from database import cur, con
 import manager
-from login import login_ui
 from ui.ui_root import root
 from details import create_edit_window
 
-if not login_ui():
-    exit(0)
 
-logo = Label(root, bd=5, relief=RIDGE, text="SYLLABUS MANAGEMENT SYSTEM", fg="red", bg='#FFEBCD', font=("times new roman", 30, "bold"))
+logo = Label(root, bd=5, relief=RIDGE, text="SYLLABUS MANAGEMENT SYSTEM", fg="red", bg='#FFEBCD', font=("yu gothic ui", 30, "bold"))
 logo.pack(side=TOP, fill=X)
 
 button_frame = Frame(root, pady=10)
@@ -94,13 +95,13 @@ Syllabus_table.config(show='headings')
 
 
 
-tk.Button(button_frame, font=("times new roman", 13, "bold"), text="ADD",
+tk.Button(button_frame, font=("yu gothic ui", 13, "bold"), text="ADD",
                   command=lambda: create_edit_window("ADD", None, lambda x: list_courses())).pack(side="left", padx=5)
-tk.Button(button_frame, font=("times new roman", 13, "bold"), text="SEARCH",
+tk.Button(button_frame, font=("yu gothic ui", 13, "bold"), text="SEARCH",
                   command=lambda: create_edit_window("SEARCH", None, lambda x: update_view(x))).pack(side="left", padx=5)
-tk.Button(button_frame, font=("times new roman", 13, "bold"), text="LIST",
+tk.Button(button_frame, font=("yu gothic ui", 13, "bold"), text="LIST",
                   command=lambda: list_courses()).pack(side="left", padx=5)
-tk.Button(button_frame, font=("times new roman", 13, "bold"), text="VIEW AND EDIT",
+tk.Button(button_frame, font=("yu gothic ui", 13, "bold"), text="VIEW AND EDIT",
                   command=lambda: view_course()).pack(side="left", padx=5)
 
 
